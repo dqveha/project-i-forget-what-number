@@ -6,10 +6,10 @@
           <select id = "volunteer_id" name="volunteer_id" class="form-select">
           <% @volunteers.each do |volunteer| %>
           <option name="<%= volunteer.name %>" value="<%= volunteer.id %>"><%= volunteer.name %></option>
-        </select>
-      </div>
-    <button type="submit"class="btn btn-danger mt-3">Remove</button>
         <% end %>
+        </select>
+    <button type="submit"class="btn btn-danger mt-3">Remove</button>
+      </div>
         <% else %>
           <p>There are currently no available volunteers.</p>
         <% end %>

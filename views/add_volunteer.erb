@@ -1,3 +1,4 @@
+<% if @projects.any? %>
 <h3>Add Volunteer</h3>
   <form action="/volunteers" method="post">
     <div class="form-group">
@@ -16,3 +17,5 @@
     <button type="submit"class="btn btn-primary mt-3">Add & Assign Volunteer</button>
     </div>
   </form>
+<hr>
+<% end %>

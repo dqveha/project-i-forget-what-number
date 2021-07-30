@@ -11,12 +11,12 @@
       <% @volunteers.each do |volunteer| %>
         <tr>
           <th scope="row"><%= volunteer.id %></th>
-          <td><%= volunteer.name %></td>
+          <td><a href="/volunteers/<%= volunteer.id %>"><%= volunteer.name %></a></td>
         </tr>
       <% end %>
     </tbody>
-    <%= erb(:unassign_volunteer) %>
   </table>
+    <%= erb(:unassign_volunteer) %>
 <% else %>
   <p>There are currently no volunteers signed up so far.</p>
 <% end %>

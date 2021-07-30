@@ -17,14 +17,22 @@
             <% @all_volunteers.each do |volunteer| %>
             <% if volunteer.project_id != @project.id %>
               <option name="<%= volunteer.name %>" value="<%= volunteer.id %>"><%= volunteer.name %></option>
-        </select>
               <% end %>
-      </div>
-    <button type="submit"class="btn btn-danger mt-3">Assign volunteer</button>
         <% end %>
+        </select>
+    <button type="submit"class="btn btn-danger mt-3">Assign volunteer</button>
+      </div>
         <% else %>
           <p>There are currently no available volunteers.</p>
         <% end %>
+    </form>
+
+<h3>Delete Project</h3>
+  <form action="/projects/<%= @project.id %>/delete_self" method="post">
+    <input name="_method" type="hidden" value="delete">
+    <div class="form-group">
+    <button type="submit"class="btn btn-danger mt-3">Delete Project</button>
+    </div>
     </form>
 
 <p><a href="/">Return to homepage</a></p>

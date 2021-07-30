@@ -21,6 +21,11 @@ get '/projects/:id' do
   erb(:view_project)
 end
 
+get '/volunteers/:id' do
+  @volunteer = Volunteer.find(params[:id])
+  erb(:view_volunteer)
+end
+
 post '/projects' do
   @project = Project.new({:title => params[:project_title], :id => nil})
   @project.save()
@@ -70,6 +75,12 @@ end
 
 delete '/projects/:id/delete' do
   @project = Project.find(params[:project_id].to_i)
+  @project.delete()
+  redirect to ('/')
+end
+
+delete '/projects/:id/delete_self' do
+  @project = Project.find(params[:id].to_i)
   @project.delete()
   redirect to ('/')
 end
