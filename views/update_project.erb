@@ -1,9 +1,9 @@
 <h3>Update Project</h3>
-    <form action="/projects/<%= @update_project.id %>" method="post">
+    <form action="/projects/<%= @project.id %>" method="post">
       <input name="_method" type="hidden" value="patch">
       <div class="form-group">
-        <label for="title">Change Project</label>
-        <input id="<%= @project.id %>" name="title" type="text">
+        <label for="title">Name:</label>
+        <input id="title" name="title" type="text">
       </div>
       <button type="submit" class="btn btn-warning mt-3">Update Project</button>
     </form>

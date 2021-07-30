@@ -39,10 +39,10 @@ post '/volunteers' do
 end
 
 patch '/projects/:id' do
-  @update_project = Project.find(params[:id].to_i)
-  @update_project.update(params[:title])
-  # redirect to ('/projects/:id')
-  erb(:update_project)
+  @project = Project.find(params[:id].to_i)
+  @project.update(params[:title])
+  @volunteers = @project.volunteers
+  erb(:view_project)
 end
 
 
