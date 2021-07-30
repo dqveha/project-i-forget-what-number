@@ -1,0 +1,17 @@
+<h2>Add Volunteer</h2>
+  <form action="/volunteers" method="post">
+    <div class="form-group">
+      <label for="volunteer_name">Volunteer's Name</label>
+      <input required id="volunteer_name" name="volunteer_name" class="form-control" type="text">
+      <% if @projects.any?%>
+            <select id = "project_id" name="project_id" class="form-select">
+              <% @projects.each do |project| %>
+                <option name="<%= project.title %>" value="<%= project.id %>"><%= project.title %></option>
+              <% end %>
+            </select>
+          <% else %>
+            <p>There are currently no available projects.</p>
+          <% end %>
+    </div>
+    <button type="submit"class="btn btn-primary mt-3">Add Volunteer</button>
+  </form>

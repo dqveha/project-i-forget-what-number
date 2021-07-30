@@ -1,0 +1,21 @@
+<h2>Project: <%=  @project.title %></h2>
+<% if @volunteers.any? %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Volunteer ID</th>
+        <th scope="col">Volunteer Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @volunteers.each do |volunteer| %>
+        <tr>
+          <th scope="row"><%= volunteer.id %></th>
+          <td><%= volunteer.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>There are currently no volunteers signed up so far.</p>
+<% end %>

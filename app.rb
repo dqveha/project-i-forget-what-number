@@ -13,3 +13,23 @@ get '/' do
   @projects = Project.all()
   erb(:index)
 end
+
+get '/projects/:id' do
+  @project = Project.find(params[:id])
+  @volunteers = @project.volunteers
+  erb(:view_project)
+end
+
+post '/projects' do
+  @project = Project.new({:title => params[:project_title], :id => nil})
+  @project.save()
+  redirect to ('/')
+end
+
+post '/volunteers' do
+  @projects = Project.all()
+  @volunteer = Volunteer.new({:name => params[:volunteer_name], :id => nil, :project_id => params[:project_id]})
+  @volunteer.save()
+  redirect to ('/')
+end
+  
