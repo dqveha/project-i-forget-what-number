@@ -9,5 +9,7 @@ require "pg"
 DB = PG.connect({ dbname: 'volunteer_tracker', host: 'db', user: 'postgres', password: 'password' })
 
 get '/' do
-  "This is connected to the database #{DB.db}."
+  @volunteers = Volunteer.all()
+  @projects = Project.all()
+  erb(:index)
 end
