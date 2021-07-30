@@ -17,13 +17,9 @@ end
 get '/projects/:id' do
   @project = Project.find(params[:id])
   @volunteers = @project.volunteers
+  @all_volunteers = Volunteer.all()
   erb(:view_project)
 end
-
-# get '/volunteers/:id' do
-#   @volunteer = Volunteer.find(params[:id])
-#   erb(:view_volunteer)
-# end
 
 post '/projects' do
   @project = Project.new({:title => params[:project_title], :id => nil})
@@ -42,6 +38,25 @@ patch '/projects/:id' do
   @project = Project.find(params[:id].to_i)
   @project.update(params[:title])
   @volunteers = @project.volunteers
+  @all_volunteers = Volunteer.all()
+  erb(:view_project)
+end
+
+patch '/projects/:id/assign' do
+  @project = Project.find(params[:id].to_i)
+  @volunteer = Volunteer.find(params[:volunteer_id].to_i)
+  @volunteer.assign_project(@project.id)
+  @volunteers = @project.volunteers()
+  @all_volunteers = Volunteer.all()
+  erb(:view_project)
+end
+
+patch '/projects/:id/unassign' do
+  @project = Project.find(params[:id].to_i)
+  @volunteer = Volunteer.find(params[:volunteer_id].to_i)
+  @volunteer.assign_project(0)
+  @volunteers = @project.volunteers()
+  @all_volunteers = Volunteer.all()
   erb(:view_project)
 end
 

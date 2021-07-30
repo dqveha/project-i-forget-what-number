@@ -38,4 +38,9 @@ class Volunteer
   def remove
     DB.exec("DELETE FROM volunteers WHERE id = #{@id};")
   end
+
+  def assign_project(project_id)
+    @project_id = project_id
+    DB.exec("UPDATE volunteers SET project_id = '#{@project_id}' WHERE id = #{@id};")
+  end
 end

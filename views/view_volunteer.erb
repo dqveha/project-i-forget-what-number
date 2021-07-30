@@ -1,9 +1,9 @@
 <h2>Volunteer: <%= @volunteer.name %></h2>
 
-<% if @volunteer.project_id != null %>
+<% if @volunteer.project_id != 0 %>
     <h3>Currently working on project "<%= Project.find(@volunteer.project_id).title %>"</h3>
   <%else%>
   <h3>Not currently planned to volunteer</h3>
-<%end%>
+<%end %>
 
 <%# stretch goal --> list out other volunteers with volunteer? %>

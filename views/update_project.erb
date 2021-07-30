@@ -3,9 +3,28 @@
       <input name="_method" type="hidden" value="patch">
       <div class="form-group">
         <label for="title">Name:</label>
-        <input id="title" name="title" type="text">
+        <input id="title" name="title" type="text" required>
       </div>
       <button type="submit" class="btn btn-warning mt-3">Update Project</button>
+    </form>
+    <hr>
+    <h3>Assign Volunteer</h3>
+    <form action="/projects/<%= @project.id %>/assign" method="post">
+      <input name="_method" type="hidden" value="patch">
+      <div class="form-group">
+        <% if @all_volunteers.any?%>
+            <select id = "volunteer_id" name="volunteer_id" class="form-select">
+            <% @all_volunteers.each do |volunteer| %>
+            <% if volunteer.project_id != @project.id %>
+              <option name="<%= volunteer.name %>" value="<%= volunteer.id %>"><%= volunteer.name %></option>
+        </select>
+              <% end %>
+      </div>
+    <button type="submit"class="btn btn-danger mt-3">Assign volunteer</button>
+        <% end %>
+        <% else %>
+          <p>There are currently no available volunteers.</p>
+        <% end %>
     </form>
 
 <p><a href="/">Return to homepage</a></p>
