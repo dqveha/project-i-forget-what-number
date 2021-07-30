@@ -37,7 +37,13 @@ post '/volunteers' do
   @volunteer.save()
   redirect to ('/')
 end
-  
+
+patch '/projects/:id' do
+  @update_project = Project.find(params[:id].to_i)
+  @update_project.update(params[:title])
+  # redirect to ('/projects/:id')
+  erb(:update_project)
+end
 
 
 delete '/volunteers/:id/remove' do
@@ -48,7 +54,6 @@ end
 
 
 delete '/projects/:id/delete' do
-  @projects = Project.all()
   @project = Project.find(params[:project_id].to_i)
   @project.delete()
   redirect to ('/')
