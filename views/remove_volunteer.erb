@@ -1,0 +1,16 @@
+<h3>Remove Volunteer</h3>
+  <form action="/volunteers/:id/remove" method="post">
+    <input name="_method" type="hidden" value="delete">
+    <div class="form-group">
+      <% if @volunteers.any?%>
+        <select id = "volunteer_id" name="volunteer_id" class="form-select">
+        <% @volunteers.each do |volunteer| %>
+        <option name="<%= volunteer.name %>" value="<%= volunteer.id %>"><%= volunteer.name %></option>
+      <% end %>
+      </select>
+      <% else %>
+        <p>There are currently no available volunteers.</p>
+      <% end %>
+    </div>
+    <button type="submit"class="btn btn-danger mt-3">Remove volunteer</button>
+  </form>

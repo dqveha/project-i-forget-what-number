@@ -44,7 +44,6 @@ class Project
 
   def delete
     DB.exec("DELETE FROM projects WHERE id = #{@id};")
-    DB.exec("UPDATE volunteers SET project_id 'nil' WHERE id = #{@id};")
   end
 
   def volunteers

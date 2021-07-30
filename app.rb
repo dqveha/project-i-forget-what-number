@@ -20,10 +20,10 @@ get '/projects/:id' do
   erb(:view_project)
 end
 
-get '/volunteers/:id' do
-  @volunteer = Volunteer.find(params[:id])
-  erb(:view_volunteer)
-end
+# get '/volunteers/:id' do
+#   @volunteer = Volunteer.find(params[:id])
+#   erb(:view_volunteer)
+# end
 
 post '/projects' do
   @project = Project.new({:title => params[:project_title], :id => nil})
@@ -38,3 +38,18 @@ post '/volunteers' do
   redirect to ('/')
 end
   
+
+
+delete '/volunteers/:id/remove' do
+  @volunteer = Volunteer.find(params[:volunteer_id].to_i)
+  @volunteer.remove()
+  redirect to ('/')
+end
+
+
+delete '/projects/:id/delete' do
+  @projects = Project.all()
+  @project = Project.find(params[:project_id].to_i)
+  @project.delete()
+  redirect to ('/')
+end

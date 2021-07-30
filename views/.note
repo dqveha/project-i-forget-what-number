@@ -1,6 +1,28 @@
-<% if @volunteer.project_id %>
-  <h3>Currently working on project <%= Project.find(@volunteer.project_id).title %></h2>
-  <%end%>
-  <%else%>
-  <h3>Not currently planned to volunteer</h3>
-<%end%>
+<h3>Delete Project</h3>
+  <form action="/projects/:id/delete" method="post">
+    <input name="_method" type="hidden" value="delete">
+    <div class="form-group">
+    <% if @projects.any?%>
+      <select id = "project_id" name="project_id" class="form-select">
+      <% @projects.each do |project| %>
+      <option name="<%= project.title %>" value="<%= project.id %>"><%= project.title %></option>
+    <% end %>
+    </select>
+    <% else %>
+      <p>There are currently no available projects.</p>
+    <% end %>
+    </div>
+    <button type="submit"class="btn btn-danger mt-3">Delete Project</button>
+  </form>
+
+      DB.exec("UPDATE volunteers SET project_id = null WHERE id = #{@id};")
+
+      <% if @volunteers.any? %>
+  <ul>
+    <% @volunteers.each do |volunteer| %>
+      <li><a href="/volunteers/<%= volunteer.id %>"><%= volunteer.name %></a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are currently no volunteers.</p>
+<% end %>
