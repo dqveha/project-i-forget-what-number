@@ -12,7 +12,7 @@ class Project
   end
 
   def ==(project_to_compare)
-    (self.title() === project_to_compare.title())
+    (self.title() == project_to_compare.title())
   end
 
   def self.all()
@@ -20,6 +20,7 @@ class Project
     projects = returned_projects.map() do |project|
       title = project.fetch("title")
       id = project.fetch("id").to_i
+      Project.new({:title => title, :id => id})
     end
     projects
   end
