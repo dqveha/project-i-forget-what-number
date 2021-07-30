@@ -1,0 +1,6 @@
+<% if @volunteer.project_id %>
+  <h3>Currently working on project <%= Project.find(@volunteer.project_id).title %></h2>
+  <%end%>
+  <%else%>
+  <h3>Not currently planned to volunteer</h3>
+<%end%>

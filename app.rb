@@ -20,6 +20,11 @@ get '/projects/:id' do
   erb(:view_project)
 end
 
+get '/volunteers/:id' do
+  @volunteer = Volunteer.find(params[:id])
+  erb(:view_volunteer)
+end
+
 post '/projects' do
   @project = Project.new({:title => params[:project_title], :id => nil})
   @project.save()
