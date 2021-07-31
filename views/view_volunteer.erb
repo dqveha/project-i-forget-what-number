@@ -1,9 +1,19 @@
-<h2>Volunteer: <%= @volunteer.name %></h2>
-
-<% if @volunteer.project_id != 0 %>
-    <h3>Currently working on project "<%= Project.find(@volunteer.project_id).title %>"</h3>
-  <%else%>
-  <h3>Not currently planned to volunteer</h3>
-<%end %>
-
-<p><a href="/">Return to homepage</a></p>
+<div class="container">
+  <h2>Volunteer: <%= @volunteer.name %></h2>
+  <% if @volunteer.project_id != 0 %>
+      <h3>Currently working on project "<%= Project.find(@volunteer.project_id).title %>"</h3>
+    <%else%>
+      <h3>Not currently planned to volunteer</h3>
+    <%end %>
+  <hr>
+  <form action="/volunteers/<%= @volunteer.id %>" method="post">
+    <input name="_method" type="hidden" value="patch">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input id="name" name="name" type="text" required>
+      <button type="submit" class="btn btn-warning">Update Volunteer</button>
+    </div>
+  </form>
+  <hr>
+  <p><a href="/">Return to homepage</a></p>
+</div>

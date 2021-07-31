@@ -39,6 +39,13 @@ post '/volunteers' do
   redirect to ('/')
 end
 
+patch '/volunteers/:id' do
+  @volunteer = Volunteer.find(params[:id].to_i)
+  @volunteer.update(params[:name])
+  @all_volunteers = Volunteer.all()
+  erb(:view_volunteer)
+end
+
 patch '/projects/:id' do
   @project = Project.find(params[:id].to_i)
   @project.update(params[:title])

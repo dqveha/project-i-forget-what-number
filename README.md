@@ -1,6 +1,6 @@
-<!-- #
+# Volunteer Tracker App
 
-## []()
+## [https://github.com/dqveha/volunteer-tracker](https://github.com/dqveha/volunteer-tracker)
 
 #### By Dave Lindqvist
 
@@ -8,7 +8,12 @@
 
 ## Description
 
-This is the ninth independent project (Ruby, Week 3) assigned by Epicodus to assess ..
+This is the ninth independent project (Ruby, Week 3) assigned by Epicodus to assess the ability of setting up a database with a one-to-many relationship, and providing CRUD functionality within Sinatra.
+
+Additional features outside of the standard Epicodus objectives:
+
+1. Reassign volunteers to another project
+2. Remove volunteer from project but still assign
 
 ## Technologies Used
 
@@ -24,17 +29,23 @@ This is the ninth independent project (Ruby, Week 3) assigned by Epicodus to ass
 2. Clone this repo to your desktop:
 
 ```
-https://github.com/dqveha/...
+https://github.com/dqveha/volunteer-tracker.git
 ```
 
-3. Open the `...` directory using Visual Studio Code
-4. Load the database SQL file by typing in:
+3. Open the `volunteer-tracker` directory using Visual Studio Code
+4. Find out your container ID within docker by typing in:
 
 ```
-docker exec [container_ID] /usr/bin/pg_dump -U postgres [db_name] > database_backup.sql
+docker ps
 ```
 
-5. (a) The user can open the webpage through:
+5. Copy the container ID related to the database and load the database_backup.sql within the folder by typing in:
+
+```
+docker exec [container_ID] /usr/bin/pg_dump -U postgres volunteer_tracker > database_backup.sql
+```
+
+6. The user can open the webpage through:
 
 ```
 docker-compose up --build
@@ -48,4 +59,4 @@ and then visit http://localhost:4567/ in the browser
 
 ---
 
-### License is GPLv3 and I make no claim to copyright. -->
+### License is GPLv3 and I make no claim to copyright.

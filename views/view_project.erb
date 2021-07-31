@@ -1,24 +1,64 @@
-<h2>Project: <%=  @project.title %></h2>
-<% if @volunteers.any? %>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Volunteer ID</th>
-        <th scope="col">Volunteer Name</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @volunteers.each do |volunteer| %>
+<div class="container">
+  <h2>Project: <%=  @project.title %></h2>
+  <% if @volunteers.any? %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Volunteer ID</th>
+          <th scope="col">Volunteer Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @volunteers.each do |volunteer| %>
         <tr>
           <th scope="row"><%= volunteer.id %></th>
           <td><a href="/volunteers/<%= volunteer.id %>"><%= volunteer.name %></a></td>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-    <%= erb(:unassign_volunteer) %>
-<% else %>
-  <p>There are currently no volunteers signed up so far.</p>
-<% end %>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="row justify-content-between">
+      <div class="col-6">
+        <h3>Assign Volunteer</h3>
+        <form action="/projects/<%= @project.id %>/assign" method="post">
+          <input name="_method" type="hidden" value="patch">
+          <div class="form-group">
+            <% if @all_volunteers.any?%>
+              <select id = "volunteer_id" name="volunteer_id" class="form-select">
+                <% @all_volunteers.each do |volunteer| %>
+                  <% if volunteer.project_id != @project.id %>
+                    <option name="<%= volunteer.name %>" value="<%= volunteer.id %>"><%= volunteer.name %></option>
+                  <% end %>
+                <% end %>
+              </select>
+            <button type="submit"class="btn btn-warning mt-3">Assign volunteer</button>
+          </div>
+          <% else %>
+            <p>There are currently no available volunteers.</p>
+          <% end %>
+        </form>
+      </div>
+      <div class="col-4">
+        <%= erb(:update_project) %>
+      </div>
+    </div>
+  <% else %>
+    <p>There are currently no volunteers signed up so far.</p>
+  <% end %>
+  <hr>
+  <div class="row justify-content-between">
+    <div class="col-6">
+      <%= erb(:unassign_volunteer) %>
+    </div>
+    <div class="col-4">
+      <form action="/projects/<%= @project.id %>/delete_self" method="post">
+        <input name="_method" type="hidden" value="delete">
+        <div class="form-group">
+          <button type="submit"class="btn btn-danger mt-3 mb-3">Delete Project</button>
+        </div>
+      </form>
+    </div>
+  </div>
 <hr>
-<%= erb(:update_project) %>
+<p><a href="/">Return to homepage</a></p>
+</div>

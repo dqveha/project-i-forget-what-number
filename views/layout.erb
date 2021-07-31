@@ -10,8 +10,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
-    <div class="container">
-      <%= yield %>
-    </div>
+    <header class="navbar-light footer mt-auto py-3 bg-success text-center text-white mb-3">
+      <h1>Volunteer Tracker App</h1>
+    </header>
+    <%= yield %>  
+    <footer class="footer mt-auto py-3 bg-light fixed-bottom">
+      <div class="container">
+        <span class="text-muted">Created by: Dave Lindqvist <a href="https://github.com/dqveha/volunteer-tracker">Github Repo</a></span>
+      </div>
+    </footer>
   </body>
 </html>

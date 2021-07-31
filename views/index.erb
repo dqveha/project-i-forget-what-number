@@ -1,27 +1,38 @@
-<h3>Current Project Opportunities</h3>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>Volunteer Opportunities</h3>
+      <%= erb(:view_projects) %>
+    </div>
+    <div class="col">
+      <h3>Current Volunteers</h3>
+      <%= erb(:view_volunteers) %>
+    </div>
+  </div>
+</div>  
+<hr>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <%= erb(:add_project) %>
+    </div>
+    <div class="col">
+      <%= erb(:add_volunteer) %>
+    </div>
+  </div>
+</div>  
 <div>
-<%= erb(:view_projects) %>
 </div>
 
 <hr>
 
-<h3>Current Volunteers</h3>
-<div>
-<%= erb(:view_volunteers) %>
-</div>
-
-<hr>
-
-<div>
-<%= erb(:add_project) %>
-<hr>
-<%= erb(:delete_project)%>
-</div>
-
-<hr>
-
-<div>
-<%= erb(:add_volunteer) %>
-
-<%= erb(:remove_volunteer) %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <%= erb(:delete_project)%>
+    </div>
+    <div class="col">
+      <%= erb(:remove_volunteer) %>
+    </div>
+  </div>
 </div>
