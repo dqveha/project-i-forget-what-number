@@ -8,7 +8,7 @@
 
 ## Description
 
-This is the ninth independent project (Ruby, Week 3) assigned by Epicodus to assess the ability of setting up a database with a one-to-many relationship, and providing CRUD functionality within Sinatra.
+This is the ninth independent project (Ruby, Week 3) assigned by Epicodus to assess the ability of setting up a database with a one-to-many relationship, and providing CRUD functionality within Sinatra. The app is designed for volunteer coordinators to track volunteers working on projects.
 
 Additional features outside of the standard Epicodus objectives:
 

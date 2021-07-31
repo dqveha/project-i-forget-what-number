@@ -38,25 +38,27 @@
           <% end %>
         </form>
       </div>
+    <% else %>
+      <p>There are currently no volunteers signed up so far.</p>
+    <% end %>
       <div class="col-4">
         <%= erb(:update_project) %>
       </div>
+    <hr>
     </div>
-  <% else %>
-    <p>There are currently no volunteers signed up so far.</p>
-  <% end %>
-  <hr>
-  <div class="row justify-content-between">
-    <div class="col-6">
-      <%= erb(:unassign_volunteer) %>
-    </div>
-    <div class="col-4">
-      <form action="/projects/<%= @project.id %>/delete_self" method="post">
-        <input name="_method" type="hidden" value="delete">
-        <div class="form-group">
-          <button type="submit"class="btn btn-danger mt-3 mb-3">Delete Project</button>
-        </div>
-      </form>
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-6">
+        <%= erb(:unassign_volunteer) %>
+      </div>
+      <div class="col-4">
+        <form action="/projects/<%= @project.id %>/delete_self" method="post">
+          <input name="_method" type="hidden" value="delete">
+          <div class="form-group">
+            <button type="submit"class="btn btn-danger mt-3 mb-3">Delete Project</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 <hr>
