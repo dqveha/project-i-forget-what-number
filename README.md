@@ -10,10 +10,14 @@
 
 This is the ninth independent project (Ruby, Week 3) assigned by Epicodus to assess the ability of setting up a database with a one-to-many relationship, and providing CRUD functionality within Sinatra. The app is designed for volunteer coordinators to track volunteers working on projects.
 
+For a visual relationship representation of the database:
+![volunteer tracker database](https://github.com/dqveha/volunteer-tracker/blob/main/database-visual.png?raw=true)
+
 Additional features outside of the standard Epicodus objectives:
 
 1. Reassign volunteers to another project
-2. Remove volunteer from project but still assign
+2. Remove volunteer from project, yet can still assign
+3. Search function within navbar
 
 ## Technologies Used
 
@@ -33,7 +37,7 @@ https://github.com/dqveha/volunteer-tracker.git
 ```
 
 3. Open the `volunteer-tracker` directory using Visual Studio Code
-4. Find out your container ID within docker by typing in:
+4. Find out your container ID within docker by typing in the terminal:
 
 ```
 docker ps
@@ -42,7 +46,7 @@ docker ps
 5. Copy the container ID related to the database and load the database_backup.sql within the folder by typing in:
 
 ```
-docker exec [container_ID] /usr/bin/pg_dump -U postgres volunteer_tracker > database_backup.sql
+docker exec [container_ID] /usr/bin/pg_dump -U postgres volunteer_tracker < database_backup.sql
 ```
 
 6. The user can open the webpage through:

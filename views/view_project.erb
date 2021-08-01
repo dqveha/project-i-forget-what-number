@@ -11,7 +11,7 @@
     <tbody>
       <% @volunteers.each do |volunteer| %>
       <tr>
-        <th scope="row"><%= volunteer.id %></th>
+        <td scope="row"><%= volunteer.id %></td>
         <td><a href="/volunteers/<%= volunteer.id %>"><%= volunteer.name %></a></td>
       </tr>
       <% end %>
