@@ -37,24 +37,23 @@ https://github.com/dqveha/volunteer-tracker.git
 ```
 
 3. Open the `volunteer-tracker` directory using Visual Studio Code
-4. Find out your container ID within docker by typing in the terminal:
+4. Run command `docker-compose up --build` in your terminal
+5. Find out your container ID within docker by typing in the terminal:
 
 ```
 docker ps
 ```
 
-5. Copy the container ID related to the database and load the database_backup.sql within the folder by typing in:
+6. Copy the container ID related to the database and load the database_backup.sql within the folder by typing in:
 
 ```
-docker exec [container_ID] /usr/bin/pg_dump -U postgres volunteer_tracker < database_backup.sql
+docker exec [container_ID] pg_dump -U postgres volunteer_tracker < database_backup.sql
 ```
 
-6. The user can open the webpage through:
+7. The user can open the webpage by visiting this URL in the browser:
 
 ```
-docker-compose up --build
-
-and then visit http://localhost:4567/ in the browser
+http://localhost:4567/
 ```
 
 ## Known Issues:
