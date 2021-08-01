@@ -56,4 +56,15 @@ class Project
     end
     volunteers
   end
+
+  def self.search(phrase)
+    @phrase = phrase
+    results = DB.exec("SELECT * FROM projects WHERE title ILIKE '%#{@phrase}%'")
+    matches = results.map() do |match|
+      title = match.fetch("title")
+      id = match.fetch("id")
+      Project.new({:title => title, :id => id})
+    end
+    matches
+  end
 end

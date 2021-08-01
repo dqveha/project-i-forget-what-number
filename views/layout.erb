@@ -10,9 +10,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
-    <header class="navbar-light footer mt-auto py-3 bg-success text-center text-white mb-3">
-      <h1>Volunteer Tracker App</h1>
-    </header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-success">
+      <div class="container-fluid">
+        <a class="navbar-brand text-white" href="/"><h2>Volunteer Tracker App</h2></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
+            <button class="btn btn-outline-success bg-light" id="search" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
     <%= yield %>  
     <footer class="footer mt-auto py-3 bg-light fixed-bottom">
       <div class="container">

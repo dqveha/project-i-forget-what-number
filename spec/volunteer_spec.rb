@@ -74,4 +74,22 @@ describe Volunteer do
       expect(volunteer1.project_id).to eq 1
     end
   end
+
+  describe '.search' do
+    it 'searches through the projects table and returns output of top 3 ranks' do
+      volunteer1 = Volunteer.new({:name => 'Jane', :project_id => 1, :id => nil})
+      volunteer1.save
+      volunteer2 = Volunteer.new({:name => 'Joe', :project_id => 7, :id => nil})
+      volunteer2.save
+      volunteer3 = Volunteer.new({:name => 'Jill', :project_id => 3, :id => nil})
+      volunteer3.save
+      volunteer4 = Volunteer.new({:name => 'Jam', :project_id => 7, :id => nil})
+      volunteer4.save
+      volunteer5 = Volunteer.new({:name => 'Jaws', :project_id => 5, :id => nil})
+      volunteer5.save
+      volunteer6 = Volunteer.new({:name => 'Jelly', :project_id => 2, :id => nil})
+      volunteer6.save
+      expect(Volunteer.search("ja")).to eq [volunteer1, volunteer4, volunteer5] 
+    end
+  end
 end

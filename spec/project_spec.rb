@@ -90,4 +90,34 @@ describe Project do
       expect(Project.all).to eq []
     end
   end
+
+  describe '#volunteers' do
+    it 'returns all volunteers for a specific project' do
+      project = Project.new({:title => 'Teaching Kids to Code', :id => nil})
+      project.save
+      volunteer1 = Volunteer.new({:name => 'Jasmine', :project_id => project.id, :id => nil})
+      volunteer1.save
+      volunteer2 = Volunteer.new({:name => 'Joe', :project_id => project.id, :id => nil})
+      volunteer2.save
+      expect(project.volunteers).to eq [volunteer1, volunteer2]
+    end
+  end
+
+  describe '.search' do
+    it 'searches through the projects table and returns output of top 3 ranks' do
+      project1 = Project.new({:title => 'Teaching Kids to Code', :id => nil})
+      project1.save
+      project2 = Project.new({:title => 'Teaching Ruby to Kids', :id => nil})
+      project2.save
+      project3 = Project.new({:title => 'Teaching Ruby to Kids', :id => nil})
+      project3.save
+      project4 = Project.new({:title => 'Teaching Code to Kids', :id => nil})
+      project4.save
+      project5 = Project.new({:title => 'Teaching Ruby to Kids', :id => nil})
+      project5.save
+      project6 = Project.new({:title => 'Teaching Code to Coders', :id => nil})
+      project6.save
+      expect(Project.search("code")).to eq [project1, project4, project6] 
+    end
+  end
 end

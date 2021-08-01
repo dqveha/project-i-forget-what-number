@@ -48,4 +48,16 @@ class Volunteer
     @name = name
     DB.exec("UPDATE volunteers SET name = '#{@name}' WHERE id = #{@id};")
   end
+  
+  def self.search(phrase)
+    @phrase = phrase
+    results = DB.exec("SELECT * FROM volunteers WHERE name ILIKE '%#{@phrase}%';")
+    matches = results.map() do |match|
+      project_id = match.fetch("project_id")
+      name = match.fetch("name")
+      id = match.fetch("id")
+      Volunteer.new({:name => name, :project_id => project_id, :id => id})
+    end
+    matches
+  end
 end
