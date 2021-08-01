@@ -44,10 +44,22 @@ https://github.com/dqveha/volunteer-tracker.git
 docker ps
 ```
 
-6. Copy the container ID related to the database and load the database_backup.sql within the folder by typing in:
+6. (a): Copy the container ID related to the database and load the database_backup.sql within the folder by typing in:
 
 ```
 docker exec [container_ID] pg_dump -U postgres volunteer_tracker < database_backup.sql
+```
+
+6. (b): If step 6(a) does not work, replace 'volunteer_tracker' with 'postgres' and try again.
+
+7. (c): If step 6(a) and 6(b) does not work through Docker, follow these steps here within the terminal to create the database yourself:
+
+```
+docker exec -it -u postgres [container_ID] psql
+CREATE DATABASE volunteer_tracker;
+\c volunteer_tracker
+CREATE TABLE projects (title varchar, id serial PRIMARY KEY);
+CREATE TABLE volunteers (name varchar, project_id int, id serial PRIMARY KEY);
 ```
 
 7. The user can open the webpage by visiting this URL in the browser:
@@ -58,7 +70,8 @@ http://localhost:4567/
 
 ## Known Issues:
 
-1. Please open a pull request if you have any issues!
+1. When loading the database_backup.sql file into PostgreSQL within Docker, it might not register that the name of the database implemented is "volunteer_tracker" thus there are steps 6(b) and 6(c) in case the first option does not work.
+2. Please open a pull request if you have any issues!
 
 ---
 
