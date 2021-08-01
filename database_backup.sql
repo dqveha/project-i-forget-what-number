@@ -108,7 +108,6 @@ ALTER TABLE ONLY public.volunteers ALTER COLUMN id SET DEFAULT nextval('public.v
 --
 
 COPY public.projects (title, id) FROM stdin;
-Teaching Kids to Code	787
 \.
 
 
@@ -117,7 +116,6 @@ Teaching Kids to Code	787
 --
 
 COPY public.volunteers (name, project_id, id) FROM stdin;
-George	787	585
 \.
 
 
