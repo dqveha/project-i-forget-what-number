@@ -32,6 +32,12 @@ post '/projects' do
   redirect to ('/')
 end
 
+post '/search_results' do
+  @projects = Project.search(params[:search])
+  @volunteers = Volunteer.search(params[:search])
+  erb(:search_results)
+end
+
 post '/volunteers' do
   @projects = Project.all()
   @volunteer = Volunteer.new({:name => params[:volunteer_name], :id => nil, :project_id => params[:project_id]})

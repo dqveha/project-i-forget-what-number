@@ -1,0 +1,36 @@
+<div class="container">
+  <h2>Search Results</h2>
+  <hr>
+  <h3>Projects</h3>
+  <% if @projects.any? %>
+    <ul>
+      <% @projects.each do |project| %>
+        <li><a href="/projects/<%= project.id %>"><%= project.title %></a></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>Sorry, no match under projects was found.</p>
+  <% end %>
+  <hr>
+  <h3>Volunteers</h3>
+  <% if @volunteers.any? %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Volunteer ID</th>
+          <th scope="col">Volunteer Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @volunteers.each do |volunteer| %>
+          <tr>
+            <th scope="row"><%= volunteer.id %></th>
+            <td><a href="/volunteers/<%= volunteer.id %>"><%= volunteer.name %></a></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>Sorry, no match volunteers was found.</p>
+  <% end %>
+</div>
