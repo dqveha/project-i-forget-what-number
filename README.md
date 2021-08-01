@@ -11,7 +11,8 @@
 This is the ninth independent project (Ruby, Week 3) assigned by Epicodus to assess the ability of setting up a database with a one-to-many relationship, and providing CRUD functionality within Sinatra. The app is designed for volunteer coordinators to track volunteers working on projects.
 
 For a visual relationship representation of the database:
-![volunteer tracker database](https://github.com/dqveha/volunteer-tracker/blob/main/database-visual.png?raw=true)
+
+## ![volunteer tracker database](https://github.com/dqveha/volunteer-tracker/blob/main/database-visual.png?raw=true)
 
 Additional features outside of the standard Epicodus objectives:
 
@@ -44,23 +45,20 @@ https://github.com/dqveha/volunteer-tracker.git
 docker ps
 ```
 
-6. (a): Copy the container ID related to the database and load the database_backup.sql within the folder by typing in:
+6. (a) Copy the container ID related to the database and load the database_backup.sql within the folder by typing in:
 
 ```
 docker exec [container_ID] pg_dump -U postgres volunteer_tracker < database_backup.sql
 ```
 
-6. (b): If step 6(a) does not work, replace 'volunteer_tracker' with 'postgres' and try again.
+    + (b) If step 6(a) does not work, replace 'volunteer_tracker' with 'postgres' and try again.
+    + (c) If step 6(a) and 6(b) does not work through Docker, follow these steps here within the terminal to create the database yourself:
 
-7. (c): If step 6(a) and 6(b) does not work through Docker, follow these steps here within the terminal to create the database yourself:
-
-```
-docker exec -it -u postgres [container_ID] psql
-CREATE DATABASE volunteer_tracker;
-\c volunteer_tracker
-CREATE TABLE projects (title varchar, id serial PRIMARY KEY);
-CREATE TABLE volunteers (name varchar, project_id int, id serial PRIMARY KEY);
-```
+    docker exec -it -u postgres [container_ID] psql
+    CREATE DATABASE volunteer_tracker;
+    \c volunteer_tracker
+    CREATE TABLE projects (title varchar, id serial PRIMARY KEY);
+    CREATE TABLE volunteers (name varchar, project_id int, id serial PRIMARY KEY);
 
 7. The user can open the webpage by visiting this URL in the browser:
 
